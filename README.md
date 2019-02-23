@@ -1,5 +1,5 @@
 # WixSharpPlayground
-Experimenting with WixSharp open source project
+Experimenting with WixSharp open source project - https://github.com/oleg-shilo/wixsharp
 
 I created a few projects
 * WixSharpPlayground - the product/main app
