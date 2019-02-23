@@ -1,6 +1,8 @@
 # WixSharpPlayground
 Experimenting with WixSharp open source project - https://github.com/oleg-shilo/wixsharp
 
+Examples https://github.com/oleg-shilo/wixsharp/tree/master/Source/src/WixSharp.Samples/Wix%23%20Samples
+
 I created a few projects
 * WixSharpPlayground - the product/main app
 * SomeTool - some tool deployed with the product
