@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Microsoft.Deployment.WindowsInstaller;
 using WixSharp;
 using WixSharp.Forms;
 
@@ -9,7 +10,7 @@ using WixSharp.Forms;
 
 namespace Installer
 {
-	class Program
+	public class Program
 	{
 		static void Main()
 		{
@@ -18,6 +19,11 @@ namespace Installer
 			var mainApp = new Feature("MainApp", true, false);
 
 			var project = new ManagedProject("MyProduct",
+				new ElevatedManagedAction(CustomActions.Install, Return.check, When.After, Step.InstallFiles, Condition.NOT_Installed, CustomActions.Rollback)
+				{
+					UsesProperties = "Prop=Install", // need to tunnel properties since ElevatedManagedAction is a deferred action
+					RollbackArg = "Prop=Rollback"
+				},
 				new Binary(new Id("MyCertificateFile"), @"Certificate\certificate.p12"),
 				new Certificate("MyCertificate", StoreLocation.localMachine, StoreName.personal, "MyCertificateFile"),
 				new Dir("%ProgramFiles%",
@@ -77,6 +83,25 @@ namespace Installer
 		{
 			if (!e.IsUISupressed && !e.IsUninstalling)
 				MessageBox.Show(e.ToString(), "AfterExecute");
+		}
+	}
+
+	public static class CustomActions
+	{
+		[CustomAction]
+		public static ActionResult Install(Session session)
+		{
+			MessageBox.Show(session.Property("Prop"), "Install");
+
+			return ActionResult.Success;
+		}
+
+		[CustomAction]
+		public static ActionResult Rollback(Session session)
+		{
+			MessageBox.Show(session.Property("Prop"), "Rollback");
+
+			return ActionResult.Success;
 		}
 	}
 }

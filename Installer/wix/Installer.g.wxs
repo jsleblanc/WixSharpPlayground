@@ -99,10 +99,15 @@
 
     <UI />
 
+    <SetProperty Id="Install_Rollback" Before="Install_Rollback" Sequence="execute" Value="Prop=Rollback;INSTALLDIR=[INSTALLDIR];UILevel=[UILevel];ProductCode=[ProductCode]" />
+
     <UI>
       <EmbeddedUI Id="WixSharp_EmbeddedUI_Asm" SourceFile="WixSharp.UI.CA.dll" />
     </UI>
 
+    <CustomAction Id="Set_Install_Props" Property="Install" Value="Prop=Install;INSTALLDIR=[INSTALLDIR];UILevel=[UILevel];ProductCode=[ProductCode]" />
+    <CustomAction Id="Install" BinaryKey="Install_File" DllEntry="Install" Return="check" Impersonate="no" Execute="deferred" />
+    <CustomAction Id="Install_Rollback" BinaryKey="Install_File" DllEntry="Rollback" Return="check" Impersonate="no" Execute="rollback" />
     <CustomAction Id="WixSharp_InitRuntime_Action" BinaryKey="WixSharp_InitRuntime_Action_File" DllEntry="WixSharp_InitRuntime_Action" Return="check" Execute="immediate" />
     <CustomAction Id="Set_CancelRequestHandler_Props" Property="CancelRequestHandler" Value="UpgradeCode=[UpgradeCode];INSTALLDIR=[INSTALLDIR];UILevel=[UILevel];ProductCode=[ProductCode]" />
     <CustomAction Id="CancelRequestHandler" BinaryKey="WixSharp_InitRuntime_Action_File" DllEntry="CancelRequestHandler" Return="check" Impersonate="no" Execute="deferred" />
@@ -111,6 +116,7 @@
     <CustomAction Id="Set_WixSharp_AfterInstall_Action_Props" Property="WixSharp_AfterInstall_Action" Value="WixSharp_AfterInstall_Handlers=[WixSharp_AfterInstall_Handlers];WIXSHARP_RUNTIME_DATA=[WIXSHARP_RUNTIME_DATA];INSTALLDIR=[INSTALLDIR];UILevel=[UILevel];ProductName=[ProductName];INSTALLDIR=[INSTALLDIR];UILevel=[UILevel];ProductCode=[ProductCode]" />
     <CustomAction Id="WixSharp_AfterInstall_Action" BinaryKey="WixSharp_InitRuntime_Action_File" DllEntry="WixSharp_AfterInstall_Action" Return="check" Impersonate="no" Execute="deferred" />
 
+    <Binary Id="Install_File" SourceFile="%this%.CA.dll" />
     <Binary Id="WixSharp_InitRuntime_Action_File" SourceFile="WixSharp.CA.dll" />
     <Binary Id="MyCertificateFile" SourceFile="Certificate\certificate.p12" />
     <Binary Id="WixSharp_UIText" SourceFile="MyProduct.wxl" />
@@ -157,6 +163,9 @@
     </Feature>
 
     <InstallExecuteSequence>
+      <Custom Action="Set_Install_Props" After="InstallFiles" />
+      <Custom Action="Install" After="Set_Install_Props"> (NOT Installed) </Custom>
+      <Custom Action="Install_Rollback" Before="Install"> (NOT Installed) </Custom>
       <Custom Action="WixSharp_InitRuntime_Action" Before="AppSearch"> (1) </Custom>
       <Custom Action="Set_CancelRequestHandler_Props" Before="InstallFinalize" />
       <Custom Action="CancelRequestHandler" After="Set_CancelRequestHandler_Props"> (NOT (REMOVE="ALL")) </Custom>
