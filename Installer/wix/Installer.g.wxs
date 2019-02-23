@@ -12,63 +12,60 @@
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder" Name="ProgramFilesFolder">
-        <Directory Id="ProgramFilesFolder.My_Company" Name="My Company">
-          <Directory Id="INSTALLDIR" Name="My Product">
+        <Directory Id="INSTALLDIR" Name="My Product">
 
-            <Component Id="Component.FSharp.Core.dll_10689289" Guid="6fe30b47-2577-43ad-9095-18611fc427af">
-              <File Id="FSharp.Core.dll_10689289" Source="..\WixSharpPlayground\bin\Debug\FSharp.Core.dll" />
+          <Component Id="Component.FSharp.Core.dll_267548219" Guid="6fe30b47-2577-43ad-9095-186180c88d60">
+            <File Id="FSharp.Core.dll_267548219" Source="..\WixSharpPlayground\bin\Debug\FSharp.Core.dll" />
+          </Component>
+
+          <Component Id="Component.FSharp.Core.xml_1349292631" Guid="6fe30b47-2577-43ad-9095-186159e1389a">
+            <File Id="FSharp.Core.xml_1349292631" Source="..\WixSharpPlayground\bin\Debug\FSharp.Core.xml" />
+          </Component>
+
+          <Component Id="Component.System.ValueTuple.dll_1966493069" Guid="6fe30b47-2577-43ad-9095-1861a4efb0c5">
+            <File Id="System.ValueTuple.dll_1966493069" Source="..\WixSharpPlayground\bin\Debug\System.ValueTuple.dll" />
+          </Component>
+
+          <Component Id="Component.WixSharpPlayground.exe_1214225904" Guid="6fe30b47-2577-43ad-9095-1861b1929bac">
+            <File Id="WixSharpPlayground.exe_1214225904" Source="..\WixSharpPlayground\bin\Debug\WixSharpPlayground.exe" />
+          </Component>
+
+          <Component Id="Component.WixSharpPlayground.exe.config_769704920" Guid="6fe30b47-2577-43ad-9095-1861c30b5bdd">
+            <File Id="WixSharpPlayground.exe.config_769704920" Source="..\WixSharpPlayground\bin\Debug\WixSharpPlayground.exe.config" />
+          </Component>
+
+          <Component Id="Component.WixSharpPlayground.XML_44816593" Guid="6fe30b47-2577-43ad-9095-1861ed1444ec">
+            <File Id="WixSharpPlayground.XML_44816593" Source="..\WixSharpPlayground\bin\Debug\WixSharpPlayground.XML" />
+          </Component>
+
+          <Directory Id="INSTALLDIR.SomeTool" Name="SomeTool">
+
+            <Component Id="Component.SomeTool.exe_2138960508" Guid="6fe30b47-2577-43ad-9095-1861a912e1ca">
+              <File Id="SomeTool.exe_2138960508" Source="..\SomeTool\bin\Debug\SomeTool.exe" />
             </Component>
 
-            <Component Id="Component.FSharp.Core.xml_1578083950" Guid="6fe30b47-2577-43ad-9095-1861f3b0e5ec">
-              <File Id="FSharp.Core.xml_1578083950" Source="..\WixSharpPlayground\bin\Debug\FSharp.Core.xml" />
+            <Component Id="Component.SomeTool.exe.config_1568451984" Guid="6fe30b47-2577-43ad-9095-1861030da699">
+              <File Id="SomeTool.exe.config_1568451984" Source="..\SomeTool\bin\Debug\SomeTool.exe.config" />
             </Component>
 
-            <Component Id="Component.System.ValueTuple.dll_909104860" Guid="6fe30b47-2577-43ad-9095-186151fe6a13">
-              <File Id="System.ValueTuple.dll_909104860" Source="..\WixSharpPlayground\bin\Debug\System.ValueTuple.dll" />
+          </Directory>
+
+          <Directory Id="INSTALLDIR.SomeOtherTool" Name="SomeOtherTool">
+
+            <Component Id="Component.CommonLib.dll_1317293099" Guid="6fe30b47-2577-43ad-9095-1861d8c0c13e">
+              <File Id="CommonLib.dll_1317293099" Source="..\SomeOtherTool\bin\Debug\CommonLib.dll" />
             </Component>
 
-            <Component Id="Component.WixSharpPlayground.exe_1510104468" Guid="6fe30b47-2577-43ad-9095-18618316f3de">
-              <File Id="WixSharpPlayground.exe_1510104468" Source="..\WixSharpPlayground\bin\Debug\WixSharpPlayground.exe" />
+            <Component Id="Component.SomeOtherTool.exe_1550854319" Guid="6fe30b47-2577-43ad-9095-186135bc8331">
+              <File Id="SomeOtherTool.exe_1550854319" Source="..\SomeOtherTool\bin\Debug\SomeOtherTool.exe" />
             </Component>
 
-            <Component Id="Component.WixSharpPlayground.exe.config_2096255340" Guid="6fe30b47-2577-43ad-9095-1861b599f1c4">
-              <File Id="WixSharpPlayground.exe.config_2096255340" Source="..\WixSharpPlayground\bin\Debug\WixSharpPlayground.exe.config" />
-            </Component>
-
-            <Component Id="Component.WixSharpPlayground.XML_1834182166" Guid="6fe30b47-2577-43ad-9095-186158517726">
-              <File Id="WixSharpPlayground.XML_1834182166" Source="..\WixSharpPlayground\bin\Debug\WixSharpPlayground.XML" />
+            <Component Id="Component.SomeOtherTool.exe.config_1631553358" Guid="6fe30b47-2577-43ad-9095-1861963610d0">
+              <File Id="SomeOtherTool.exe.config_1631553358" Source="..\SomeOtherTool\bin\Debug\SomeOtherTool.exe.config" />
             </Component>
 
           </Directory>
         </Directory>
-      </Directory>
-
-      <Directory Id="TARGETDIR.SomeTool" Name="SomeTool">
-
-        <Component Id="Component.SomeTool.exe_1292589499" Guid="6fe30b47-2577-43ad-9095-186171fc16d2">
-          <File Id="SomeTool.exe_1292589499" Source="..\SomeTool\bin\Debug\SomeTool.exe" />
-        </Component>
-
-        <Component Id="Component.SomeTool.exe.config_1149759557" Guid="6fe30b47-2577-43ad-9095-1861f0ec3d8f">
-          <File Id="SomeTool.exe.config_1149759557" Source="..\SomeTool\bin\Debug\SomeTool.exe.config" />
-        </Component>
-
-      </Directory>
-
-      <Directory Id="TARGETDIR.SomeOtherTool" Name="SomeOtherTool">
-
-        <Component Id="Component.CommonLib.dll_2049352964" Guid="6fe30b47-2577-43ad-9095-1861965d765f">
-          <File Id="CommonLib.dll_2049352964" Source="..\SomeOtherTool\bin\Debug\CommonLib.dll" />
-        </Component>
-
-        <Component Id="Component.SomeOtherTool.exe_1770943753" Guid="6fe30b47-2577-43ad-9095-1861f8e6d1b1">
-          <File Id="SomeOtherTool.exe_1770943753" Source="..\SomeOtherTool\bin\Debug\SomeOtherTool.exe" />
-        </Component>
-
-        <Component Id="Component.SomeOtherTool.exe.config_34760782" Guid="6fe30b47-2577-43ad-9095-186108574eb7">
-          <File Id="SomeOtherTool.exe.config_34760782" Source="..\SomeOtherTool\bin\Debug\SomeOtherTool.exe.config" />
-        </Component>
-
       </Directory>
     </Directory>
 
@@ -104,23 +101,23 @@
     <Property Id="WixSharp_AfterInstall_Handlers" Value="WixSharpSetup, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null|Installer.Program|Msi_AfterInstall" />
 
     <Feature Id="MainApp" Title="MainApp" Absent="disallow" Level="1">
-      <ComponentRef Id="Component.FSharp.Core.dll_10689289" />
-      <ComponentRef Id="Component.FSharp.Core.xml_1578083950" />
-      <ComponentRef Id="Component.System.ValueTuple.dll_909104860" />
-      <ComponentRef Id="Component.WixSharpPlayground.exe_1510104468" />
-      <ComponentRef Id="Component.WixSharpPlayground.exe.config_2096255340" />
-      <ComponentRef Id="Component.WixSharpPlayground.XML_1834182166" />
+      <ComponentRef Id="Component.FSharp.Core.dll_267548219" />
+      <ComponentRef Id="Component.FSharp.Core.xml_1349292631" />
+      <ComponentRef Id="Component.System.ValueTuple.dll_1966493069" />
+      <ComponentRef Id="Component.WixSharpPlayground.exe_1214225904" />
+      <ComponentRef Id="Component.WixSharpPlayground.exe.config_769704920" />
+      <ComponentRef Id="Component.WixSharpPlayground.XML_44816593" />
     </Feature>
 
     <Feature Id="SomeTool" Title="SomeTool" Absent="allow" Level="1">
-      <ComponentRef Id="Component.SomeTool.exe_1292589499" />
-      <ComponentRef Id="Component.SomeTool.exe.config_1149759557" />
+      <ComponentRef Id="Component.SomeTool.exe_2138960508" />
+      <ComponentRef Id="Component.SomeTool.exe.config_1568451984" />
     </Feature>
 
     <Feature Id="SomeOtherTool" Title="SomeOtherTool" Absent="allow" Level="1">
-      <ComponentRef Id="Component.CommonLib.dll_2049352964" />
-      <ComponentRef Id="Component.SomeOtherTool.exe_1770943753" />
-      <ComponentRef Id="Component.SomeOtherTool.exe.config_34760782" />
+      <ComponentRef Id="Component.CommonLib.dll_1317293099" />
+      <ComponentRef Id="Component.SomeOtherTool.exe_1550854319" />
+      <ComponentRef Id="Component.SomeOtherTool.exe.config_1631553358" />
     </Feature>
 
     <InstallExecuteSequence>

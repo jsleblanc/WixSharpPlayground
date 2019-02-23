@@ -18,13 +18,14 @@ namespace Installer
 			var mainApp = new Feature("MainApp", true, false);
 
 			var project = new ManagedProject("MyProduct",
-				new Dir(@"%ProgramFiles%\My Company\My Product",
-					new DirFiles(mainApp, @"..\WixSharpPlayground\bin\Debug\*.*", f => !f.EndsWith(".pdb"))),
-				new Dir("SomeTool",
-					new DirFiles(someTool, @"..\SomeTool\bin\Debug\*.*", f => !f.EndsWith(".pdb"))),
-				new Dir("SomeOtherTool",
-					new DirFiles(someOtherTool, @"..\SomeOtherTool\bin\Debug\*.*", f => !f.EndsWith(".pdb")))
-			);
+				new Dir("%ProgramFiles%",
+					new InstallDir("My Product",
+						new DirFiles(mainApp, @"..\WixSharpPlayground\bin\Debug\*.*", f => !f.EndsWith(".pdb")),
+						new Dir("SomeTool",
+							new DirFiles(someTool, @"..\SomeTool\bin\Debug\*.*", f => !f.EndsWith(".pdb"))),
+						new Dir("SomeOtherTool",
+							new DirFiles(someOtherTool, @"..\SomeOtherTool\bin\Debug\*.*", f => !f.EndsWith(".pdb")))
+					)));
 
 			project.GUID = new Guid("6fe30b47-2577-43ad-9095-1861ba25889b");
 
