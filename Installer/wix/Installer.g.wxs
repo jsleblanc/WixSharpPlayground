@@ -5,7 +5,7 @@
     Changes to this file will be lost if the code is regenerated.
 </auto-generated>
 -->
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
   <Product Id="6fe30b47-2577-43ad-9095-1861ca25889c" Name="MyProduct" Language="1033" Codepage="Windows-1252" Version="1.0.0.0" UpgradeCode="6fe30b47-2577-43ad-9095-1861ba25889b" Manufacturer="josep">
     <Package InstallerVersion="200" Compressed="yes" SummaryCodepage="Windows-1252" Languages="1033" />
     <Media Id="1" Cabinet="MyProduct.cab" EmbedCab="yes" />
@@ -38,6 +38,13 @@
             <File Id="WixSharpPlayground.XML_44816593" Source="..\WixSharpPlayground\bin\Debug\WixSharpPlayground.XML" />
           </Component>
 
+          <Component Id="Component.DirPermission" Guid="6fe30b47-2577-43ad-9095-186193cff838" KeyPath="yes">
+            <CreateFolder>
+              <util:PermissionEx User="Everyone" GenericAll="yes" />
+            </CreateFolder>
+            <RemoveFolder Id="INSTALLDIR" On="uninstall" />
+          </Component>
+
           <Directory Id="INSTALLDIR.SomeTool" Name="SomeTool">
 
             <Component Id="Component.SomeTool.exe_2138960508" Guid="6fe30b47-2577-43ad-9095-1861a912e1ca">
@@ -46,6 +53,13 @@
 
             <Component Id="Component.SomeTool.exe.config_1568451984" Guid="6fe30b47-2577-43ad-9095-1861030da699">
               <File Id="SomeTool.exe.config_1568451984" Source="..\SomeTool\bin\Debug\SomeTool.exe.config" />
+            </Component>
+
+            <Component Id="Component.DirPermission.1" Guid="6fe30b47-2577-43ad-9095-18612b6e19bf" KeyPath="yes">
+              <CreateFolder>
+                <util:PermissionEx User="Everyone" GenericAll="yes" />
+              </CreateFolder>
+              <RemoveFolder Id="INSTALLDIR.SomeTool" On="uninstall" />
             </Component>
 
           </Directory>
@@ -64,7 +78,21 @@
               <File Id="SomeOtherTool.exe.config_1631553358" Source="..\SomeOtherTool\bin\Debug\SomeOtherTool.exe.config" />
             </Component>
 
+            <Component Id="Component.DirPermission.2" Guid="6fe30b47-2577-43ad-9095-18612b6e19c0" KeyPath="yes">
+              <CreateFolder>
+                <util:PermissionEx User="Everyone" GenericAll="yes" />
+              </CreateFolder>
+              <RemoveFolder Id="INSTALLDIR.SomeOtherTool" On="uninstall" />
+            </Component>
+
           </Directory>
+
+          <Component Id="MyCertificate" Guid="6fe30b47-2577-43ad-9095-1861bb1ccd7c" KeyPath="yes">
+            <iis:Certificate Id="MyCertificate" BinaryKey="MyCertificateFile" Name="MyCertificate" StoreLocation="localMachine" StoreName="personal" />
+
+            <CreateFolder />
+          </Component>
+
         </Directory>
       </Directory>
     </Directory>
@@ -84,6 +112,7 @@
     <CustomAction Id="WixSharp_AfterInstall_Action" BinaryKey="WixSharp_InitRuntime_Action_File" DllEntry="WixSharp_AfterInstall_Action" Return="check" Impersonate="no" Execute="deferred" />
 
     <Binary Id="WixSharp_InitRuntime_Action_File" SourceFile="WixSharp.CA.dll" />
+    <Binary Id="MyCertificateFile" SourceFile="Certificate\certificate.p12" />
     <Binary Id="WixSharp_UIText" SourceFile="MyProduct.wxl" />
     <Binary Id="WixSharp_LicenceFile" SourceFile="MyProduct.licence.rtf" />
     <Binary Id="WixUI_Bmp_Dialog" SourceFile="MyProduct.dialog_bmp.png" />
@@ -118,6 +147,13 @@
       <ComponentRef Id="Component.CommonLib.dll_1317293099" />
       <ComponentRef Id="Component.SomeOtherTool.exe_1550854319" />
       <ComponentRef Id="Component.SomeOtherTool.exe.config_1631553358" />
+    </Feature>
+
+    <Feature Id="Complete" Title="Complete" Absent="allow" Level="1">
+      <ComponentRef Id="MyCertificate" />
+      <ComponentRef Id="Component.DirPermission" />
+      <ComponentRef Id="Component.DirPermission.1" />
+      <ComponentRef Id="Component.DirPermission.2" />
     </Feature>
 
     <InstallExecuteSequence>
