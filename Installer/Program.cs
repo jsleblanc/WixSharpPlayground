@@ -13,9 +13,16 @@ namespace Installer
 	{
 		static void Main()
 		{
-			var feature = new Feature("SomeTool", true, true);
+			var someTool = new Feature("SomeTool", true, true);
+			var someOtherTool = new Feature("SomeOtherTool", true, true);
+			var mainApp = new Feature("MainApp", true, false);
+
 			var project = new ManagedProject("MyProduct",
-				new Dir(@"%ProgramFiles%\My Company\My Product", new DirFiles(@"..\SomeTool\bin\Debug\*.*")));
+				new Dir(@"%ProgramFiles%\My Company\My Product",
+					new DirFiles(mainApp, @"..\WixSharpPlayground\bin\Debug\*.*", f => !f.EndsWith(".pdb")),
+					new DirFiles(someTool, @"..\SomeTool\bin\Debug\*.*", f => !f.EndsWith(".pdb")),
+					new DirFiles(someOtherTool, @"..\SomeOtherTool\bin\Debug\*.*", f => !f.EndsWith(".pdb")))
+			);
 
 			project.GUID = new Guid("6fe30b47-2577-43ad-9095-1861ba25889b");
 
@@ -44,6 +51,8 @@ namespace Installer
 
 			//project.SourceBaseDir = ".";
 			//project.OutDir = "<output dir path>";
+
+			
 
 			project.BuildWxs();
 			project.BuildMsi();
