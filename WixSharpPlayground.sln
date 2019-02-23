@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Installer\Inst
 		{B0A43373-0A7D-4C81-B91F-F2BFA200A6D1} = {B0A43373-0A7D-4C81-B91F-F2BFA200A6D1}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonLib", "CommonLib\CommonLib.csproj", "{F73A8D19-70A5-4EBB-90B8-DFBDBA45B95A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{C9A243E5-6443-4A00-ACAC-C20A61286264}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9A243E5-6443-4A00-ACAC-C20A61286264}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9A243E5-6443-4A00-ACAC-C20A61286264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F73A8D19-70A5-4EBB-90B8-DFBDBA45B95A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F73A8D19-70A5-4EBB-90B8-DFBDBA45B95A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F73A8D19-70A5-4EBB-90B8-DFBDBA45B95A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F73A8D19-70A5-4EBB-90B8-DFBDBA45B95A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

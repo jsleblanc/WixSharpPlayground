@@ -19,8 +19,10 @@ namespace Installer
 
 			var project = new ManagedProject("MyProduct",
 				new Dir(@"%ProgramFiles%\My Company\My Product",
-					new DirFiles(mainApp, @"..\WixSharpPlayground\bin\Debug\*.*", f => !f.EndsWith(".pdb")),
-					new DirFiles(someTool, @"..\SomeTool\bin\Debug\*.*", f => !f.EndsWith(".pdb")),
+					new DirFiles(mainApp, @"..\WixSharpPlayground\bin\Debug\*.*", f => !f.EndsWith(".pdb"))),
+				new Dir("SomeTool",
+					new DirFiles(someTool, @"..\SomeTool\bin\Debug\*.*", f => !f.EndsWith(".pdb"))),
+				new Dir("SomeOtherTool",
 					new DirFiles(someOtherTool, @"..\SomeOtherTool\bin\Debug\*.*", f => !f.EndsWith(".pdb")))
 			);
 

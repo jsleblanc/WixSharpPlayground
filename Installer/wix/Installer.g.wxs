@@ -39,24 +39,36 @@
               <File Id="WixSharpPlayground.XML_1834182166" Source="..\WixSharpPlayground\bin\Debug\WixSharpPlayground.XML" />
             </Component>
 
-            <Component Id="Component.SomeTool.exe_1475080533" Guid="6fe30b47-2577-43ad-9095-186190e90ace">
-              <File Id="SomeTool.exe_1475080533" Source="..\SomeTool\bin\Debug\SomeTool.exe" />
-            </Component>
-
-            <Component Id="Component.SomeTool.exe.config_1004804959" Guid="6fe30b47-2577-43ad-9095-18611b00c363">
-              <File Id="SomeTool.exe.config_1004804959" Source="..\SomeTool\bin\Debug\SomeTool.exe.config" />
-            </Component>
-
-            <Component Id="Component.SomeOtherTool.exe_39223219" Guid="6fe30b47-2577-43ad-9095-186158bcb343">
-              <File Id="SomeOtherTool.exe_39223219" Source="..\SomeOtherTool\bin\Debug\SomeOtherTool.exe" />
-            </Component>
-
-            <Component Id="Component.SomeOtherTool.exe.config_1314446216" Guid="6fe30b47-2577-43ad-9095-186169e5012a">
-              <File Id="SomeOtherTool.exe.config_1314446216" Source="..\SomeOtherTool\bin\Debug\SomeOtherTool.exe.config" />
-            </Component>
-
           </Directory>
         </Directory>
+      </Directory>
+
+      <Directory Id="TARGETDIR.SomeTool" Name="SomeTool">
+
+        <Component Id="Component.SomeTool.exe_1292589499" Guid="6fe30b47-2577-43ad-9095-186171fc16d2">
+          <File Id="SomeTool.exe_1292589499" Source="..\SomeTool\bin\Debug\SomeTool.exe" />
+        </Component>
+
+        <Component Id="Component.SomeTool.exe.config_1149759557" Guid="6fe30b47-2577-43ad-9095-1861f0ec3d8f">
+          <File Id="SomeTool.exe.config_1149759557" Source="..\SomeTool\bin\Debug\SomeTool.exe.config" />
+        </Component>
+
+      </Directory>
+
+      <Directory Id="TARGETDIR.SomeOtherTool" Name="SomeOtherTool">
+
+        <Component Id="Component.CommonLib.dll_2049352964" Guid="6fe30b47-2577-43ad-9095-1861965d765f">
+          <File Id="CommonLib.dll_2049352964" Source="..\SomeOtherTool\bin\Debug\CommonLib.dll" />
+        </Component>
+
+        <Component Id="Component.SomeOtherTool.exe_1770943753" Guid="6fe30b47-2577-43ad-9095-1861f8e6d1b1">
+          <File Id="SomeOtherTool.exe_1770943753" Source="..\SomeOtherTool\bin\Debug\SomeOtherTool.exe" />
+        </Component>
+
+        <Component Id="Component.SomeOtherTool.exe.config_34760782" Guid="6fe30b47-2577-43ad-9095-186108574eb7">
+          <File Id="SomeOtherTool.exe.config_34760782" Source="..\SomeOtherTool\bin\Debug\SomeOtherTool.exe.config" />
+        </Component>
+
       </Directory>
     </Directory>
 
@@ -101,13 +113,14 @@
     </Feature>
 
     <Feature Id="SomeTool" Title="SomeTool" Absent="allow" Level="1">
-      <ComponentRef Id="Component.SomeTool.exe_1475080533" />
-      <ComponentRef Id="Component.SomeTool.exe.config_1004804959" />
+      <ComponentRef Id="Component.SomeTool.exe_1292589499" />
+      <ComponentRef Id="Component.SomeTool.exe.config_1149759557" />
     </Feature>
 
     <Feature Id="SomeOtherTool" Title="SomeOtherTool" Absent="allow" Level="1">
-      <ComponentRef Id="Component.SomeOtherTool.exe_39223219" />
-      <ComponentRef Id="Component.SomeOtherTool.exe.config_1314446216" />
+      <ComponentRef Id="Component.CommonLib.dll_2049352964" />
+      <ComponentRef Id="Component.SomeOtherTool.exe_1770943753" />
+      <ComponentRef Id="Component.SomeOtherTool.exe.config_34760782" />
     </Feature>
 
     <InstallExecuteSequence>
